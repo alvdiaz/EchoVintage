@@ -1,0 +1,72 @@
+{% extends 'tienda/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block js %}
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'tienda/css/edtilo.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+         background-image: url({% static 'tienda/img/fondo2.jpg' %}); /* Cambia 'ruta/a/tu/imagen/fondo.jpg' por la ruta de tu imagen */
+         background-size: cover; /* Para asegurar que la imagen de fondo cubra todo el cuerpo */
+         background-position: center; /* Para centrar la imagen de fondo */
+        }
+        body {
+            background-image: url({% static 'tienda/img/fondo2.jpg' %});
+            background-size: cover;
+            background-position: center;
+        }
+        .card {
+            margin-top: 50px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+        }
+        .card-body {
+            padding: 30px;
+        }
+        h2 {
+            color: #343a40;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #004085;
+        }
+        .form-group label, .form-control, .form-check-label {
+            color: #000; /* Cambia el color de las letras a negro */
+        }
+    </style>
+{% endblock %}
+
+{% block contenido %}
+
+
+
+    <div class="row">
+        <div class="col-17">
+            <div class="card">
+                <div class="card-body">
+                    <h2> Editar Vinilo </h2>
+                    <form action="" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form | crispy }}
+                        <div class="d-flex justify-content-end">
+                            <input type="reset" value="Cancelar" class="btn btn-secondary">
+                            &nbsp;
+                            <input type="submit" value="Modificar" class="btn btn-primary">
+                        </div>
+                    </form>
+                    {{ mensaje }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

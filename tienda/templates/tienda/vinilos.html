@@ -1,0 +1,55 @@
+{% extends 'tienda/base.html' %}
+{% load static %}
+
+{% block js %}
+<script>
+    function agregarAlCarrito(nombre, precio) {
+        const item = { nombre, precio };
+        // Obtener carrito actual del localStorage o un array vacío si no hay uno
+        const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+        // Agregar el nuevo item al carrito
+        carrito.push(item);
+        // Guardar el carrito actualizado en el localStorage
+        localStorage.setItem('carrito', JSON.stringify(carrito));
+        // Otras acciones necesarias como mostrar el carrito actualizado en la página
+        mostrarCarrito();
+    }
+
+    function mostrarCarrito() {
+        // Aquí puedes implementar la lógica para mostrar el carrito en la página
+        // Recuperar el carrito del localStorage y mostrarlo en la página
+    }
+</script>
+
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'tienda/css/edtilo.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<style>
+    body {
+      background-image: url({% static 'tienda/img/fondo2.jpg' %}); /* Cambia 'ruta/a/tu/imagen/fondo.jpg' por la ruta de tu imagen */
+      background-size: cover; /* Para asegurar que la imagen de fondo cubra todo el cuerpo */
+      background-position: center; /* Para centrar la imagen de fondo */
+    }
+  </style>
+
+{% endblock %}
+
+{% block contenido %}
+{% load humanize %}
+
+    <div class="container">
+        {% for p in vinilos %}
+        <div class="producto">
+            {% if p.imagen %}
+            <img src="{{ p.imagen.url}}" alt="Ejemplo 1">
+            {% endif %}
+            <h2>{{ p.nombre | capfirst}}</h2>
+            <p>${{p.precio | intcomma }}</p>
+            <button onclick="agregarAlCarrito('{{ p.nombre }}',{{p.precio}})">Agregar al carrito</button>
+        </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}

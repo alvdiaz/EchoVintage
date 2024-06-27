@@ -1,0 +1,94 @@
+{% extends 'tienda/base.html' %}
+{% load static %}
+
+{% block js %}
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="{% static 'tienda/js/validacion.js' %}"></script>
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="{% static 'tienda/css/edtilo.css' %}">
+<style>
+    body {
+      background-image: url({% static "tienda/img/fondocontact.jpg"%}); /* Cambia 'ruta/a/tu/imagen/fondo.jpg' por la ruta de tu imagen */
+      background-size: cover; /* Para asegurar que la imagen de fondo cubra todo el cuerpo */
+      background-position: center; /* Para centrar la imagen de fondo */
+    }
+</style>
+{% endblock %}
+
+{% block contenido %}
+
+<body>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6">
+                <h2>ACCEDER</h2>
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="loginEmail">Nombre de usuario o correo electrónico *</label>
+                        <input type="text" class="form-control" id="loginEmail" name="loginEmail">
+                        <div id="mensajeLoginEmail"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Contraseña *</label>
+                        <div class="input-group">
+                            <input type="password" class="form-control" id="loginPassword" name="loginPassword">
+                            <div class="input-group-append">
+                                <span class="input-group-text">
+                                    <i class="fa fa-eye" id="togglePassword"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <div id="mensajeLoginPassword"></div>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="rememberMe">
+                        <label class="form-check-label" for="rememberMe">Recuérdame</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">ACCESO</button>
+                    <p class="mt-3"><a href="#">¿Olvidaste la contraseña?</a></p>
+                </form>
+            </div>
+            <div class="col-md-6">
+                <h2>REGISTRARSE</h2>
+                <form id="registerForm">
+                    <div class="form-group">
+                        <label for="registerUsername">Nombre de usuario *</label>
+                        <input type="text" class="form-control" id="registerUsername" name="registerUsername">
+                        <div id="mensajeRegisterUsername"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerEmail">Dirección de correo electrónico *</label>
+                        <input type="text" class="form-control" id="registerEmail" name="registerEmail">
+                        <div id="mensajeRegisterEmail"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerPassword">Contraseña *</label>
+                        <div class="input-group">
+                            <input type="password" class="form-control" id="registerPassword" name="registerPassword">
+                            <div class="input-group-append">
+                                <span class="input-group-text">
+                                    <i class="fa fa-eye" id="togglePasswordRegister"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <div id="mensajeRegisterPassword"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="captcha">¿Cuánto es 11 + 1? *</label>
+                        <input type="text" class="form-control" id="captcha" name="captcha">
+                        <div id="mensajeCaptcha"></div>
+                    </div>
+                    <button type="submit" class="btn btn-success">REGISTRARSE</button>
+                    <div id="mensajeRegistro" class="mt-3"></div>
+                </form>
+                <p class="mt-3">Usaremos tus datos para gestionar tus pedidos y crear una cuenta para mejorar tu
+                    experiencia, entre otros.</p>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

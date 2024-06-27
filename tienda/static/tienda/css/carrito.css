@@ -1,0 +1,93 @@
+
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f2f2f2;
+}
+
+.container {
+    margin: 20px auto;
+    max-width: 800px;
+    padding: 0 20px;
+}
+
+/* Estilos para el encabezado */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+nav {
+    background-color: #666;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+    display: inline-block;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+}
+
+.carrito {
+    border: 1px solid #ccc;
+    padding: 20px;
+}
+
+#lista-carrito {
+    list-style: none;
+    padding: 0;
+}
+
+#lista-carrito li {
+    display: flex;
+    align-items: center;
+}
+
+#lista-carrito li img {
+    margin-right: 10px;
+}
+
+.total {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+/* Estilos para el contenedor del carrito */
+#lista-carrito {
+    list-style: none;
+    padding: 0;
+    display: flex; /* Utilizar flexbox para alinear elementos en fila */
+    flex-wrap: wrap; /* Permitir que los elementos se envuelvan a la siguiente línea si no hay suficiente espacio */
+    justify-content: flex-start; /* Alinear los elementos a la izquierda */
+}
+
+/* Estilos para cada elemento del carrito */
+#lista-carrito li {
+    display: flex;
+    align-items: center;
+    margin-right: 10px; /* Espacio entre elementos */
+    margin-bottom: 10px; /* Espacio entre filas */
+}
+
+.btn-comprar {
+    margin-top: 10px; /* Espacio entre el botón y el carrito */
+}
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+

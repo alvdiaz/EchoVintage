@@ -1,0 +1,154 @@
+{% extends 'tienda/base.html' %}
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'tienda/css/edtilo.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+{% endblock %}
+{% block contenido %}
+<div class="container py-4">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h2 class="card-title">Vinilos</h2>
+                    <hr>
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Precio</th>
+                                    <th>¿Es nuevo?</th>
+                                    <th>Opciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for vinilo in vinilos %}
+                                <tr>
+                                    <td>{{ vinilo.nombre }}</td>
+                                    <td>${{ vinilo.precio }}</td>
+                                    <td>{{ vinilo.nuevo }}</td>
+                                    <td>
+                                        <div class="btn-group" role="group">
+                                            <a href="{% url 'modificar_producto' 'vinilo' vinilo.id %}" class="btn btn-info btn-sm">Modificar</a>
+                                            &nbsp;
+                                            <form action="{% url 'eliminar_producto' 'vinilo' vinilo.id %}" method="post" class="d-inline">
+                                                {% csrf_token %}
+                                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de eliminar esta torta?')">Eliminar</button>
+                                            </form>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% empty %}
+                                <tr>
+                                    <td colspan="4" class="text-center">No hay vinilos disponibles.</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h2 class="card-title">Cassettes existentes</h2>
+                    <hr>
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Precio</th>
+                                    <th>¿Es nuevo?</th>
+                                    <th>Opciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for cassette in cassettes %}
+                                <tr>
+                                    <td>{{ cassette.nombre_cassete }}</td>
+                                    <td>${{ cassette.precio_cassete }}</td>
+                                    <td>{{ cassette.nuevo_cassete }}</td>
+                                    <td>
+                                        <div class="btn-group" role="group">
+                                            <a href="{% url 'modificar_producto' 'cassette' cassette.id %}" class="btn btn-info btn-sm">Modificar</a>
+                                            &nbsp;
+                                            <form action="{% url 'eliminar_producto' 'cassette' cassette.id %}" method="post" class="d-inline">
+                                                {% csrf_token %}
+                                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de eliminar este cassette?')">Eliminar</button>
+                                            </form>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% empty %}
+                                <tr>
+                                    <td colspan="4" class="text-center">No hay cassettes disponibles.</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h2 class="card-title">Cds existentes</h2>
+                    <hr>
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Precio</th>
+                                    <th>¿Es nuevo?</th>
+                                    <th>Opciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for cd in cds %}
+                                <tr>
+                                    <td>{{ cd.nombre_cd }}</td>
+                                    <td>${{ cd.precio_cd }}</td>
+                                    <td>{{ cd.nuevo_cd }}</td>
+                                    <td>
+                                        <div class="btn-group" role="group">
+                                            <a href="{% url 'modificar_producto' 'cd' cd.id %}" class="btn btn-info btn-sm">Modificar</a>
+                                            &nbsp;
+                                            <form action="{% url 'eliminar_producto' 'cd' cd.id %}" method="post" class="d-inline">
+                                                {% csrf_token %}
+                                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de eliminar este cd?')">Eliminar</button>
+                                            </form>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% empty %}
+                                <tr>
+                                    <td colspan="4" class="text-center">No hay Cds disponibles.</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <div class="text-center mt-4">
+        <a href="{% url 'agregarvinilo' %}" class="btn btn-primary mx-2">Agregar vinilo</a>
+        <a href="{% url 'agregar_cassette' %}" class="btn btn-primary mx-2">Agregar Cassette</a>
+        <a href="{% url 'agregar_cd' %}" class="btn btn-primary mx-2">Agregar Cd</a>
+    </div>
+</div>
+{% endblock %}
+
+

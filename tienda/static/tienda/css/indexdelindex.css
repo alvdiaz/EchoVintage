@@ -1,0 +1,88 @@
+/* Estilos personalizados */
+body {
+  background-image: url('/img/fondo2.jpg'); /* Cambia 'ruta/a/tu/imagen/fondo.jpg' por la ruta de tu imagen */
+  background-size: cover; /* Para asegurar que la imagen de fondo cubra todo el cuerpo */
+  background-position: center; /* Para centrar la imagen de fondo */
+}
+/* Estilo general del cuerpo con un fondo gris oscuro */
+body {
+  background-color: #333333; /* Gris oscuro */
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #ffffff; /* Texto en blanco para contrastar con el fondo oscuro */
+}
+
+/* Estilo para el título principal con color más vibrante para destacar */
+h1 {
+  color: #ffffff;
+  text-shadow: 2px 2px 4px #000;
+}
+
+/* Estilo para los párrafos de descripción con un tono de blanco suavizado */
+p {
+  color: #dddddd; /* Blanco suave para mejorar la legibilidad */
+  line-height: 1.6;
+}
+
+/* Estilo para los botones de navegación con un efecto sutil */
+.btn-primary {
+  background-image: linear-gradient(to right, #007bff, #0056b3);
+  border: none;
+  color: #ffffff; /* Mantenemos el texto del botón en blanco */
+}
+
+.btn-primary:hover {
+  background-image: linear-gradient(to right, #0056b3, #004099);
+}
+
+/* Estilo para el carrusel, con ajustes para integrarse mejor con el fondo oscuro */
+.carousel-item img {
+  height: 400px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* Estilo para el pie de página con un contraste adecuado */
+footer {
+  background-color: #292929; /* Un gris ligeramente más claro que el cuerpo para diferenciar */
+  color: #cccccc; /* Gris claro para el texto */
+  text-align: center;
+  padding: 20px 0;
+  border-top: 1px solid #444;
+}
+
+/* Ajustes adicionales para la estética general */
+.container {
+  background-color: #424242; /* Gris medio para los contenedores */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  border-radius: 5px;
+  overflow: hidden;
+  color: #eeeeee; /* Texto más claro para contraste */
+}
+
+.row {
+  margin: 20px;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: invert(1);
+}
+
+footer {
+  background-color: #292929; /* Gris oscuro para el fondo */
+  color: #ffffff; /* Texto en blanco para contrastar con el fondo */
+  padding: 20px 0;
+}
+
+footer a {
+  color: #ffffff; /* Asegura que los enlaces sean visibles contra el fondo oscuro */
+  text-decoration: none; /* Opcional: elimina el subrayado de los enlaces */
+}
+
+footer a:hover {
+  text-decoration: underline; /* Opcional: añade un efecto al pasar el mouse */
+}

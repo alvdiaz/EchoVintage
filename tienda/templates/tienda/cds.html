@@ -1,0 +1,75 @@
+{% extends 'tienda/base.html' %}
+{% load static %}
+
+{% block js %}
+<script>
+    function agregarAlCarrito(nombre, precio) {
+        const item = { nombre, precio };
+        const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+        carrito.push(item);
+        localStorage.setItem('carrito', JSON.stringify(carrito));
+        mostrarCarrito();
+    }
+
+    function mostrarCarrito() {
+        // Implementación para mostrar el carrito
+    }
+</script>
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'tienda/css/edtilo.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+          background-image: url({% static 'tienda/img/fondo2.jpg' %}); /* Cambia 'ruta/a/tu/imagen/fondo.jpg' por la ruta de tu imagen */
+          background-size: cover; /* Para asegurar que la imagen de fondo cubra todo el cuerpo */
+          background-position: center; /* Para centrar la imagen de fondo */
+        }
+      </style>
+{% endblock %}
+
+{% block contenido %}
+
+<div class="container">
+    <!-- Ejemplo de producto CD -->
+    <div class="producto">
+        <img src="{% static 'tienda/img/Antonio-Aguilar-Voces-de-America-15-Exitos-Vol.-2-2000-Ed.-MEX - 600x597.jpeg' %}" alt="CD Ejemplo 1">
+        <h2>Antonio Aguilar – Voces De América 15 Éxitos Vol. 2 [2000] Ed. MEX</h2>
+        <p>Artista: Nombre del Artista 1</p>
+        <p>Precio: $7.500</p>
+        <button onclick="agregarAlCarrito('CD Antonio Aguilar', 7500)">Agregar al carrito</button>
+    </div>
+    <div class="producto">
+        <img src="{% static 'tienda/img/50rancheras.jpg' %}" alt="CD Ejemplo 2">
+        <h2>50 Rancheras variadas</h2>
+        <p>Artista: Varios artistas</p>
+        <p>Precio: $7.000</p>
+        <button onclick="agregarAlCarrito('CD 50 rancheras', 7000)">Agregar al carrito</button>
+    </div>
+    <div class="producto">
+        <img src="{% static 'tienda/img/X_100rancheras7412.jpg' %}" alt="CD Ejemplo 1">
+        <p>Artista: Varios artistas</p>
+        <p>Precio: $15.000</p>
+        <button onclick="agregarAlCarrito('CD 100 rancheras', 15000)">Agregar al carrito</button>            
+    </div>
+    <div class="producto">
+        <img src="{% static 'tienda/img/nochede.jpg' %}" alt="CD Ejemplo 1">
+        <p>Artista: noche de brujas</p>
+        <p>Precio: $15.000</p>
+        <button onclick="agregarAlCarrito('CD noche de brujas', 15000)">Agregar al carrito</button>            
+    </div>
+    <div class="producto">
+        <img src="{% static 'tienda/img/kendrick.jpg' %}" alt="CD Kendrick lamar - m.A.A.d city">
+        <p>Artista: Kendrick lamar</p>
+        <p>Precio: $15.000</p>
+        <button onclick="agregarAlCarrito('CD Kendrick lamar - m.A.A.d city', 15000)">Agregar al carrito</button>            
+    </div>
+    <div class="producto">
+        <img src="{% static 'tienda/img/The_Eminem_Show.jpg' %}" alt="CD  Eminem - the eminem show">
+        <p>Artista: eminem</p>
+        <p>Precio: $15.000</p>
+        <button onclick="agregarAlCarrito('CD  Eminem - the eminem show', 15000)">Agregar al carrito</button>            
+    </div>
+</div>
+{% endblock %}
