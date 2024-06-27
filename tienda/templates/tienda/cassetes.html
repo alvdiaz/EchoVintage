@@ -16,43 +16,98 @@
     }
 </script>
 {% endblock %}
+
 {% block css %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="{% static 'tienda/css/edtilo.css' %}">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 <style>
     body {
-      background-image: url({% static 'tienda/img/fondo2.jpg' %}); /* Cambia 'ruta/a/tu/imagen/fondo.jpg' por la ruta de tu imagen */
-      background-size: cover; /* Para asegurar que la imagen de fondo cubra todo el cuerpo */
-      background-position: center; /* Para centrar la imagen de fondo */
+      background-image: url({% static 'tienda/img/fondo2.jpg' %});
+      background-size: cover;
+      background-position: center;
     }
-  </style>
+
+    /* Estilos para los productos */
+    .producto {
+        width: 250px; /* Ancho fijo para mantener el mismo tamaño */
+        margin: 20px;
+        padding: 15px;
+        background-color: white;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        text-align: center;
+    }
+
+    .producto img {
+        width: 200px; /* Tamaño fijo para las imágenes */
+        height: 200px; /* Tamaño fijo para las imágenes */
+        object-fit: cover; /* Ajuste para cubrir completamente el espacio */
+        border-radius: 5px; /* Borde redondeado para las imágenes */
+        margin-bottom: 10px;
+    }
+
+    .producto h2 {
+        font-size: 1.2rem;
+        margin-bottom: 5px;
+    }
+
+    .producto p {
+        font-size: 0.9rem;
+        color: #666;
+    }
+
+    .producto button {
+        margin-top: auto; /* Alinea el botón al final del contenedor */
+    }
+
+    @media (max-width: 992px) {
+        .producto {
+            width: 100%; /* Ajuste para dispositivos móviles */
+        }
+    }
+</style>
 {% endblock %}
+
 {% block contenido %}
 <div class="container">
-    <div class="producto">
-        <img src="{% static 'tienda/img/cassette_soda.jpg' %}" alt="Cassette 1">
+    <div class="row">
+        <!-- Primer conjunto de productos -->
+        <div class="col-lg-4 col-md-6">
+            <div class="producto">
+                <img src="{% static 'tienda/img/cassette_soda.jpg' %}" alt="Cassette 1">
+                <h2>Soda Stereo - Ruido blanco</h2>
+                <p>Precio: $15.000</p>
+                <button onclick="agregarAlCarrito('Soda Stereo - Ruido blanco', 15000)">Agregar al carrito</button>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+            <div class="producto">
+                <img src="{% static 'tienda/img/madona.jpg' %}" alt="Cassette 2">
+                <h2>Madonna - True Blue</h2>
+                <p>Precio: $11.000</p>
+                <button onclick="agregarAlCarrito('Madonna - True Blue', 11000)">Agregar al carrito</button>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+            <div class="producto">
+                <img src="{% static 'tienda/img/elvis.jpg' %}" alt="Cassette 3">
+                <h2>Elvis - The King Of Rock ‘N’ Roll</h2>
+                <p>Precio: $12.000</p>
+                <button onclick="agregarAlCarrito('Elvis - The King Of Rock ‘N’ Roll', 12000)">Agregar al carrito</button>
+            </div>
+        </div>
 
-        <h2>Soda estereo - Ruido blanco</h2>
-        <p>Precio: $15.000</p>
-        <button onclick="agregarAlCarrito('Soda estereo - Ruido blanco', 15000)">Agregar al carrito</button>
-    </div>
-    <div class="producto">
-        <img src="{% static 'tienda/img/madona.jpg' %}" alt="Cassette 2">
-        <h2>Madona - True blue</h2>
-        <p>Precio: $11.000</p>
-        <button onclick="agregarAlCarrito('Madona - True blue', 11000)">Agregar al carrito</button>
-    </div>
-    <div class="producto">
-        <img src="{% static 'tienda/img/elvis.jpg' %}" alt="Cassette 3">
-        <h2>Elvis - The King Of Rock ‘N’ Roll</h2>
-        <p>Precio: $12000</p>
-        <button onclick="agregarAlCarrito('Elvis - The King Of Rock ‘N’ Roll', 12000)">Agregar al carrito</button>
-    </div>
-    <div class="producto">
-        <img src="{% static 'tienda/img/losprisioneros.jpg' %}" alt="Cassette 4">
-        <h2>los prisoneros - grandes exitos  </h2>
-        <p>Precio: $12000</p>
-        <button onclick="agregarAlCarrito('los prisioneros - grandes exitos', 12000)">Agregar al carrito</button>
+        <!-- Segundo conjunto de productos -->
+        <div class="col-lg-4 col-md-6">
+            <div class="producto">
+                <img src="{% static 'tienda/img/losprisioneros.jpg' %}" alt="Cassette 4">
+                <h2>Los Prisioneros - Grandes Éxitos</h2>
+                <p>Precio: $12.000</p>
+                <button onclick="agregarAlCarrito('Los Prisioneros - Grandes Éxitos', 12000)">Agregar al carrito</button>
+            </div>
+        </div>
+        <!-- Añade más productos aquí si es necesario -->
     </div>
 </div>
 {% endblock %}

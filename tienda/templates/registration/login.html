@@ -3,18 +3,18 @@
 {% load crispy_forms_tags %}
 
 {% block css %}
-    <style>
-        /* Cambiar el color del texto del formulario a negro */
-        .card-body form * {
-            color: black;
-        }
-    </style>
+<link rel="stylesheet" href="{% static 'tienda/css/edtilo.css' %}">
+<style>
+    .card-body form * {
+        color: black !important;
+    }
+</style>
 {% endblock %}
 
 {% block contenido %}
 <div class="container mt-5 mb-auto">
     <div class="row justify-content-center">
-        <div class="col-md-6">
+        <div class="col-md-20">
             <div class="card">
                 <div class="card-header bg-primary text-white">
                     Iniciar Sesión
