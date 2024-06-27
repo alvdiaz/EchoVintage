@@ -29,7 +29,6 @@
     }
 
     .producto {
-        width: 250px; /* Ancho fijo para cada producto */
         margin: 10px;
         padding: 10px;
         background-color: #fff;
@@ -39,7 +38,7 @@
     }
 
     .producto img {
-        max-width: 100%; /* Ajustar tamaño máximo de la imagen */
+        max-width: 100%;
         border-radius: 5px;
         margin-bottom: 10px;
     }
@@ -55,27 +54,25 @@
     }
 
     .producto button {
-        margin-top: auto; /* Alinear botón al final del contenedor */
+        margin-top: auto;
     }
 </style>
 {% endblock %}
+
 {% block contenido %}
 <div class="container">
     <div class="row">
         {% for p in vinilos %}
-        <div class="col-lg-4 col-md-6">
+        <div class="col-lg-4 col-md-6 mb-4">
             <div class="producto">
                 {% if p.imagen %}
                 <img src="{{ p.imagen.url }}" alt="{{ p.nombre }}">
                 {% endif %}
                 <h2>{{ p.nombre | capfirst }}</h2>
                 <p>${{ p.precio | intcomma }}</p>
-                <button onclick="agregarAlCarrito('{{ p.nombre }}', {{ p.precio }})">Agregar al carrito</button>
+                <button class="btn btn-primary" onclick="agregarAlCarrito('{{ p.nombre }}', {{ p.precio }})">Agregar al carrito</button>
             </div>
         </div>
-        {% if forloop.counter|divisibleby:3 and not forloop.last %}
-        </div><div class="row">
-        {% endif %}
         {% endfor %}
     </div>
 </div>

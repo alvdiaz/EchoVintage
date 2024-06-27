@@ -24,27 +24,23 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 <style>
     body {
-      background-image: url({% static 'tienda/img/fondo2.jpg' %});
-      background-size: cover;
-      background-position: center;
+        background-image: url({% static 'tienda/img/fondo2.jpg' %});
+        background-size: cover;
+        background-position: center;
     }
 
-    /* Estilos para los productos */
     .producto {
-        width: 250px; /* Ancho fijo para mantener el mismo tamaño */
-        margin: 20px;
-        padding: 15px;
-        background-color: white;
-        border: 1px solid #ccc;
+        margin: 10px;
+        padding: 10px;
+        background-color: #fff;
+        border: 1px solid #ddd;
         border-radius: 5px;
         text-align: center;
     }
 
     .producto img {
-        width: 200px; /* Tamaño fijo para las imágenes */
-        height: 200px; /* Tamaño fijo para las imágenes */
-        object-fit: cover; /* Ajuste para cubrir completamente el espacio */
-        border-radius: 5px; /* Borde redondeado para las imágenes */
+        max-width: 100%;
+        border-radius: 5px;
         margin-bottom: 10px;
     }
 
@@ -59,13 +55,7 @@
     }
 
     .producto button {
-        margin-top: auto; /* Alinea el botón al final del contenedor */
-    }
-
-    @media (max-width: 992px) {
-        .producto {
-            width: 100%; /* Ajuste para dispositivos móviles */
-        }
+        margin-top: auto;
     }
 </style>
 {% endblock %}
@@ -74,19 +64,16 @@
 <div class="container">
     <div class="row">
         {% for p in cassettes %}
-        <div class="col-lg-4 col-md-6">
+        <div class="col-lg-4 col-md-6 mb-4">
             <div class="producto">
                 {% if p.imagen_cassete %}
                 <img src="/media/{{ p.imagen_cassete }}" alt="{{ p.nombre_cassete }}">
                 {% endif %}
                 <h2>{{ p.nombre_cassete | capfirst }}</h2>
                 <p>${{ p.precio_cassete | intcomma }}</p>
-                <button onclick="agregarAlCarrito('{{ p.nombre_cassete }}', {{ p.precio_cassete }})">Agregar al carrito</button>
+                <button class="btn btn-primary" onclick="agregarAlCarrito('{{ p.nombre_cassete }}', {{ p.precio_cassete }})">Agregar al carrito</button>
             </div>
         </div>
-        {% if forloop.counter|divisibleby:3 and not forloop.last %}
-        </div><div class="row">
-        {% endif %}
         {% endfor %}
     </div>
 </div>
