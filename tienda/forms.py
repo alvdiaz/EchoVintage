@@ -11,7 +11,7 @@ class ViniloForm(forms.ModelForm):
         fields = '__all__'
         
         widgets = {
-            "fecha_lanzamiento": forms.SelectDateWidget()
+            'fecha_lanzamiento':forms.DateInput(attrs={'class':'form-control','type':'date'}),
         }
 
 class CassetteForm(forms.ModelForm):
@@ -21,7 +21,7 @@ class CassetteForm(forms.ModelForm):
         fields = '__all__'
         
         widgets = {
-            "fecha_cassette": forms.SelectDateWidget()
+            'fecha_lanzamiento_cassete':forms.DateInput(attrs={'class':'form-control','type':'date'}),
         }
 
     
@@ -32,7 +32,7 @@ class CdForm(forms.ModelForm):
         fields = '__all__'
         
         widgets = {
-            "fecha_cd": forms.SelectDateWidget()
+            'fecha_lanzamiento_cd':forms.DateInput(attrs={'class':'form-control','type':'date'}),
         }
 
 class CustomUserCreationForm(UserCreationForm):

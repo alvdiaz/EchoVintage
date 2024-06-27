@@ -16,7 +16,7 @@ def cassetes(request):
     data = {
     'cassettes': cassettes
     }
-    return render(request,'tienda/cassetes.html')
+    return render(request,'tienda/cassetes.html', data)
 
 def carrito(request):
     return render(request,'tienda/carrito.html')
@@ -26,7 +26,7 @@ def cds(request):
     data = {
         'cds': cds
     }
-    return render(request,'tienda/cds.html')
+    return render(request,'tienda/cds.html', data)
 
 def contacto(request):
     return render(request,'tienda/contacto.html')

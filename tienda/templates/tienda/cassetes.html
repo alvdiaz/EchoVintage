@@ -1,5 +1,6 @@
 {% extends 'tienda/base.html' %}
 {% load static %}
+{% load humanize %}
 
 {% block js %}
 <script>
@@ -72,42 +73,21 @@
 {% block contenido %}
 <div class="container">
     <div class="row">
-        <!-- Primer conjunto de productos -->
+        {% for p in cassettes %}
         <div class="col-lg-4 col-md-6">
             <div class="producto">
-                <img src="{% static 'tienda/img/cassette_soda.jpg' %}" alt="Cassette 1">
-                <h2>Soda Stereo - Ruido blanco</h2>
-                <p>Precio: $15.000</p>
-                <button onclick="agregarAlCarrito('Soda Stereo - Ruido blanco', 15000)">Agregar al carrito</button>
+                {% if p.imagen_cassete %}
+                <img src="/media/{{ p.imagen_cassete }}" alt="{{ p.nombre_cassete }}">
+                {% endif %}
+                <h2>{{ p.nombre_cassete | capfirst }}</h2>
+                <p>${{ p.precio_cassete | intcomma }}</p>
+                <button onclick="agregarAlCarrito('{{ p.nombre_cassete }}', {{ p.precio_cassete }})">Agregar al carrito</button>
             </div>
         </div>
-        <div class="col-lg-4 col-md-6">
-            <div class="producto">
-                <img src="{% static 'tienda/img/madona.jpg' %}" alt="Cassette 2">
-                <h2>Madonna - True Blue</h2>
-                <p>Precio: $11.000</p>
-                <button onclick="agregarAlCarrito('Madonna - True Blue', 11000)">Agregar al carrito</button>
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-6">
-            <div class="producto">
-                <img src="{% static 'tienda/img/elvis.jpg' %}" alt="Cassette 3">
-                <h2>Elvis - The King Of Rock ‘N’ Roll</h2>
-                <p>Precio: $12.000</p>
-                <button onclick="agregarAlCarrito('Elvis - The King Of Rock ‘N’ Roll', 12000)">Agregar al carrito</button>
-            </div>
-        </div>
-
-        <!-- Segundo conjunto de productos -->
-        <div class="col-lg-4 col-md-6">
-            <div class="producto">
-                <img src="{% static 'tienda/img/losprisioneros.jpg' %}" alt="Cassette 4">
-                <h2>Los Prisioneros - Grandes Éxitos</h2>
-                <p>Precio: $12.000</p>
-                <button onclick="agregarAlCarrito('Los Prisioneros - Grandes Éxitos', 12000)">Agregar al carrito</button>
-            </div>
-        </div>
-        <!-- Añade más productos aquí si es necesario -->
+        {% if forloop.counter|divisibleby:3 and not forloop.last %}
+        </div><div class="row">
+        {% endif %}
+        {% endfor %}
     </div>
 </div>
 {% endblock %}

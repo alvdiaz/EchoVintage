@@ -1,7 +1,6 @@
 {% extends 'tienda/base.html' %}
 {% load static %}
 {% load humanize %}
-
 {% block js %}
 <script>
     function agregarAlCarrito(nombre, precio) {
@@ -21,12 +20,12 @@
 {% block css %}
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="{% static 'tienda/css/edtilo.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 <style>
     body {
         background-image: url({% static 'tienda/img/fondo2.jpg' %});
         background-size: cover;
         background-position: center;
-        padding-top: 20px; /* Espacio arriba para evitar superposiciones */
     }
 
     .producto {
@@ -60,7 +59,6 @@
     }
 </style>
 {% endblock %}
-
 {% block contenido %}
 <div class="container">
     <div class="row">
